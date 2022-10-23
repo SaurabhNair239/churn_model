@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import pickle
 import matplotlib.pyplot as plt
 import pandas as pd
 import tensorflow.keras.optimizers
@@ -100,12 +101,21 @@ y_pred = (y_pred >= 0.5)
 ##confusion matrix
 
 cm = confusion_matrix(y_test,y_pred)
-
 score = accuracy_score(y_test,y_pred)
 
 print(cm)
-
 print(score)
 
-##get weights
-print(Classifier.get_weights())
+model_history_data = pd.DataFrame({"loss":model_history.history["loss"],
+                                   "val_loss":model_history.history["val_loss"],
+                                   "acc":model_history.history["accuracy"],
+                                   "val_acc":model_history.history["val_accuracy"]})
+model_history_data.to_csv("model_history.csv")
+
+
+
+Classifier.save("churn_model.h5")
+
+filename_scaler = 'sc_model.pickle'
+pickle.dump(sc, open(filename_scaler, 'wb'))
+

@@ -26,10 +26,10 @@ NumOfProducts = slt.select_slider("Number of Products",[1,2,3,4])
 HasCrCard = slt.radio("Has credit card",("Yes","No"))
 IsActiveMember = slt.radio("Is active member",("Yes","No"))
 EstimatedSalary = slt.slider("Estimated salary",min_value=0,max_value=500000)
-
+result = slt.button("Predict")
 Germany = 0
 Spain = 0
-if (HasCrCard is not None) and (IsActiveMember is not None):
+if result:
      if geography == "France":
          Germany = 0
          Spain = 0
@@ -58,7 +58,7 @@ if (HasCrCard is not None) and (IsActiveMember is not None):
      slt.write("Your result will be soon displayed. Predicting..")
      slt.spinner()
      with slt.spinner(text="Work in Progress..."):
-         data = pd.DataFrame({"CreditScore":credit_score,"Age":Age,"Tenure":Tenure,"Balance":Balance,"NoOfProducts":NumOfProducts,"HasCrCard":HasCrCard,"IsActiveMember":IsActiveMember,"EstimatedSalary":EstimatedSalary,"Germany":Germany,"Spain":Spain,"Male":Male})
+         data = pd.DataFrame({"CreditScore":credit_score,"Age":Age,"Tenure":Tenure,"Balance":Balance,"NoOfProducts":NumOfProducts,"HasCrCard":HasCrCard,"IsActiveMember":IsActiveMember,"EstimatedSalary":EstimatedSalary,"Germany":Germany,"Spain":Spain,"Male":Male},index=[0])
          y_pred = predict_cnn(data)
          if y_pred == 1:
              slt.write("The Customer would be leaving the bank so please maintain better relationship with the customer....")

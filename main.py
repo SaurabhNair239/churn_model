@@ -113,7 +113,7 @@ model_history_data = pd.DataFrame({"loss":model_history.history["loss"],
 model_history_data.to_csv("model_history.csv")
 
 
-file_name = "churn_model.h5"
+file_name = "churn_model_file.h5"
 Classifier.save(file_name)
 
 filename_scaler = 'sc_model.pickle'

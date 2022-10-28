@@ -4,7 +4,6 @@ from prediction_file import predict_cnn
 
 slt.set_page_config(
      page_title='Churn Modelling'
-
 )
 
 slt.title("Customer Retention Deep learning model.")
@@ -29,6 +28,9 @@ EstimatedSalary = slt.slider("Estimated salary",min_value=0,max_value=500000)
 result = slt.button("Predict")
 Germany = 0
 Spain = 0
+slt.sidebar.subheader("Accuracy and loss of a model")
+slt.sidebar.line_chart(pd.read_csv("F:\Project\churn_model\model_history.csv")[["acc","val_acc"]])
+slt.sidebar.line_chart(pd.read_csv("F:\Project\churn_model\model_history.csv")[["loss","val_loss"]])
 if result:
      if geography == "France":
          Germany = 0

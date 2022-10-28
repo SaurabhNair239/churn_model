@@ -29,8 +29,8 @@ result = slt.button("Predict")
 Germany = 0
 Spain = 0
 slt.sidebar.subheader("Accuracy and loss of a model")
-slt.sidebar.line_chart(pd.read_csv("F:\Project\churn_model\model_history.csv")[["acc","val_acc"]])
-slt.sidebar.line_chart(pd.read_csv("F:\Project\churn_model\model_history.csv")[["loss","val_loss"]])
+slt.sidebar.line_chart(pd.read_csv("model_history.csv")[["acc","val_acc"]])
+slt.sidebar.line_chart(pd.read_csv("model_history.csv")[["loss","val_loss"]])
 if result:
      if geography == "France":
          Germany = 0
